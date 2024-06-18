@@ -1,14 +1,15 @@
 const { regexName, regexHp, regexCp, regexImage } = require("../tools/regex")
+const { typesValid } = require('../tools/pokemon-service')
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Pokemon', {
         id: {
-            types: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         name: {
-            types: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: "Le nom du pokémon est obligatoire.",
@@ -20,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         hp: {
-            types: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 isCorrectFormat(value) {
@@ -30,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         cp: {
-            types: DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 isCorrectFormat(value) {
@@ -40,12 +41,34 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         picture: {
-            types: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isCorrectFormat(value) {
                     if (!regexImage.test(value))
                         throw new Error("Le lien de l'image est de la forme : https://assets.pokemon.com/assets/cms2/img/pokedex/detail/xxx.png")
+                }
+            }
+        },
+        types: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            get() {
+                return types.getDataValue("types").split(",")
+            },
+            set(types) {
+                this.setDataValue("types", types.join())
+            },
+            validate: {
+                isCorrectFormat(value) {
+                    if (value) {
+                        value.split(",").map(val => {
+                            if (!typesValid.includes(val))
+                                throw new Error(`Les types d'un pokémon doit appartenir à la liste suivante : ${typesValid}`)
+                        })
+                    } else {
+                        throw new Error('Le pokémon doit avoir au moins un type.')
+                    }
                 }
             }
         }

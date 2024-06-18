@@ -1,10 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser")
-
+const bodyParser = require("body-parser");
+const sequelize = require('./src/db/sequelize')
 const app = express()
 
 app.use(bodyParser.json())
 
+sequelize.initBdd()
 require('./src/routes/principal')(app)
 
 app.use(({ res }) => {
