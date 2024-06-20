@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: {
+                msg: "Ce pokémon est déja enrerigtré."
+            },
             validate: {
                 notEmpty: "Le nom du pokémon est obligatoire.",
                 notNull: "Le nom du pokémon est obligatoire.",
@@ -54,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             get() {
-                return types.getDataValue("types").split(",")
+                return this.getDataValue("types").split(",")
             },
             set(types) {
                 this.setDataValue("types", types.join())
