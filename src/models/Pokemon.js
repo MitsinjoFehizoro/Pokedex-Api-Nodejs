@@ -65,7 +65,10 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 isCorrectFormat(value) {
                     if (value) {
-                        value.split(",").map(val => {
+                        let valueTab = value.split(",")
+                        if (valueTab.length > 3 || valueTab.length <= 0)
+                            throw new Error("Un pokémon doit avoir au moins 1 et au plus 3 types.")
+                        valueTab.map(val => {
                             if (!typesValid.includes(val))
                                 throw new Error(`Les types d'un pokémon doit appartenir à la liste suivante : ${typesValid}`)
                         })

@@ -12,6 +12,7 @@ require('./src/routes/principal')(app)
 require('./src/routes/create-pokemon')(app)
 require('./src/routes/find-all-pokemons')(app)
 require('./src/routes/find-pokemon-by-pk')(app)
+require('./src/routes/update-pokemon')(app)
 
 app.use(({ res }) => {
     const message = "Erreur 404 , ressource non trouvée."
