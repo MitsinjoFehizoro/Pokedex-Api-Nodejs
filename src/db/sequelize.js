@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const { name } = require("body-parser");
 
 const PokemonModel = require('../models/Pokemon');
+const UserModel = require('../models/User')
 const POKEMONS = require('../db/constant/POKEMONS.JS');
 
 const sequelize = new Sequelize('pokedex', 'root', '', {
@@ -21,6 +22,7 @@ sequelize
 
 //Instancification model
 const Pokemon = PokemonModel(sequelize, DataTypes)
+const User = UserModel(sequelize, DataTypes)
 
 //initilisation dans la bdd
 const initBdd = () => {
@@ -45,5 +47,6 @@ const initBdd = () => {
 
 module.exports = {
     Pokemon,
+    User,
     initBdd
 }

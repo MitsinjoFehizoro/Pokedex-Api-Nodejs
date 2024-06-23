@@ -8,13 +8,14 @@ app.use(bodyParser.json())
 sequelize.initBdd()
 
 //routes
-require('./src/routes/principal')(app)
-require('./src/routes/create-pokemon')(app)
-require('./src/routes/find-all-pokemons')(app)
-require('./src/routes/find-pokemon-by-pk')(app)
-require('./src/routes/update-pokemon')(app)
-require('./src/routes/delete-pokemons')(app)
-require('./src/routes/search-pokemons')(app)
+require('./src/routes/pokemons/principal')(app)
+require('./src/routes/pokemons/create-pokemon')(app)
+require('./src/routes/pokemons/find-all-pokemons')(app)
+require('./src/routes/pokemons/find-pokemon-by-pk')(app)
+require('./src/routes/pokemons/update-pokemon')(app)
+require('./src/routes/pokemons/delete-pokemons')(app)
+require('./src/routes/pokemons/search-pokemons')(app)
+require('./src/routes/users/signup')(app)
 
 app.use(({ res }) => {
     const message = "Erreur 404 , ressource non trouvée."

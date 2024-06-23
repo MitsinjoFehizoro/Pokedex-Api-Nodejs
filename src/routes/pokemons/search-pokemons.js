@@ -1,5 +1,5 @@
 const { where, Op } = require("sequelize")
-const { Pokemon } = require("../db/sequelize")
+const { Pokemon } = require("../../db/sequelize")
 
 module.exports = (app) => {
     app.get('/pokemons/search/:name', (req, res) => {

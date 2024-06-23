@@ -1,4 +1,4 @@
-const { Pokemon } = require("../db/sequelize")
+const { Pokemon } = require("../../db/sequelize")
 
 module.exports = (app) => {
     app.get('/pokemon/:id', (req, res) => {

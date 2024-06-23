@@ -1,5 +1,5 @@
 const { ValidationError } = require("sequelize")
-const { Pokemon } = require("../db/sequelize")
+const { Pokemon } = require("../../db/sequelize")
 
 module.exports = (app) => {
     app.post('/pokemon', (req, res) => {
