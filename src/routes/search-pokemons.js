@@ -2,7 +2,7 @@ const { where, Op } = require("sequelize")
 const { Pokemon } = require("../db/sequelize")
 
 module.exports = (app) => {
-    app.get('/pokemon/search/:name', (req, res) => {
+    app.get('/pokemons/search/:name', (req, res) => {
         Pokemon.findAll({
             where: {
                 name: {
