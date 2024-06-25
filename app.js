@@ -16,6 +16,7 @@ require('./src/routes/pokemons/update-pokemon')(app)
 require('./src/routes/pokemons/delete-pokemons')(app)
 require('./src/routes/pokemons/search-pokemons')(app)
 require('./src/routes/users/signup')(app)
+require('./src/routes/users/login')(app)
 
 app.use(({ res }) => {
     const message = "Erreur 404 , ressource non trouvée."
