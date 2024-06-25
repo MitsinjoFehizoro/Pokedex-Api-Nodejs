@@ -1,8 +1,9 @@
 const { ValidationError } = require("sequelize")
 const { Pokemon } = require("../../db/sequelize")
+const auth = require('../../auth/auth')
 
 module.exports = (app) => {
-    app.post('/pokemon', (req, res) => {
+    app.post('/pokemon', auth, (req, res) => {
         Pokemon.create({
             name: req.body.name,
             hp: req.body.hp,
