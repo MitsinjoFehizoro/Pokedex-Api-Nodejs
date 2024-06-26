@@ -1,3 +1,4 @@
+const { ValidationError } = require("sequelize")
 const { User } = require("../../db/sequelize")
 const bcrypt = require('bcrypt')
 
@@ -16,8 +17,12 @@ module.exports = (app) => {
                         res.json({ message })
                     })
                     .catch(error => {
-                        const message = "Erreur de la création d'un nouvau utilisateur. Réessayer dans quelques instants."
-                        res.status(500).json({ message })
+                        if (error instanceof ValidationError) {
+                            res.status(400).json({ message: error.message })
+                        } else {
+                            const message = "Erreur de la création d'un nouvau utilisateur. Réessayer dans quelques instants."
+                            res.status(500).json({ message })
+                        }
                     })
             })
             .catch(error => {

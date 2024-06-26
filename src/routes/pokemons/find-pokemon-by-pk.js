@@ -1,7 +1,7 @@
 const { Pokemon } = require("../../db/sequelize")
 
 module.exports = (app) => {
-    app.get('/pokemon/:id', (req, res) => {
+    app.get('/pokemons/:id', (req, res) => {
         Pokemon.findByPk(req.params.id)
             .then(pokemon => {
                 if (pokemon) {

@@ -3,7 +3,7 @@ const { Pokemon } = require("../../db/sequelize")
 const auth = require('../../auth/auth')
 
 module.exports = (app) => {
-    app.put('/pokemon/:id', (req, auth, res) => {
+    app.put('/pokemons/:id', auth, (req, res) => {
         Pokemon.findByPk(req.params.id)
             .then(pokemon => {
                 if (pokemon) {
@@ -48,5 +48,4 @@ module.exports = (app) => {
                 res.status(500).json({ message: "Erreur de la modification d'un pokémon. Réessayer dans quelques instants." })
             })
     })
-
 }

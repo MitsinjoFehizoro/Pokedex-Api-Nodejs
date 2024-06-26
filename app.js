@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sequelize = require('./src/db/sequelize')
 const app = express()
+const cors = require('cors')
 
 app.use(bodyParser.json())
+app.use(cors())
 
 sequelize.initBdd()
 
@@ -23,7 +25,7 @@ app.use(({ res }) => {
     res.status(404).json({ message })
 })
 
-const port = 3000
+const port = 5174
 app.listen(port, () => {
     console.log(`Notre application est lancée sur le port ${port}`);
 })
