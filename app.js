@@ -5,7 +5,15 @@ const app = express()
 const cors = require('cors')
 
 app.use(bodyParser.json())
-app.use(cors())
+
+// Configuration CORS
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Autorise les cookies dans les requêtes
+};
+app.use(cors(corsOptions));
 
 sequelize.initBdd()
 
