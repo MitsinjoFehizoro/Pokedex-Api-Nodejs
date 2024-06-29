@@ -16,7 +16,7 @@ module.exports = (app) => {
                                 { expiresIn: '24h' }
                             )
                             const message = "Utilisateur connecté."
-                            res.json({ message: message, data: user, token: token })
+                            res.json({ message: message, user: user, token: token })
                         } else {
                             const message = "Mot de passe incorrect."
                             res.status(401).json({ message })
