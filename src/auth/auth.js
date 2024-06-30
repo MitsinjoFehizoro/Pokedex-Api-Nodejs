@@ -2,8 +2,7 @@ const jwt = require("jsonwebtoken")
 const privateKey = require("./private-key")
 
 module.exports = (req, res, next) => {
-    const authorizationHeader = req.headers.authorizationHeader
-
+    const authorizationHeader = req.headers.authorization
     if (authorizationHeader) {
         const token = authorizationHeader.split(" ")[1]
         jwt.verify(

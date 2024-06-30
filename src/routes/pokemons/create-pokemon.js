@@ -3,7 +3,7 @@ const { Pokemon } = require("../../db/sequelize")
 const auth = require('../../auth/auth')
 
 module.exports = (app) => {
-    app.post('/pokemons', (req, res) => {
+    app.post('/pokemons', auth, (req, res) => {
         Pokemon.create({
             name: req.body.name,
             hp: req.body.hp,
