@@ -11,10 +11,9 @@ Le projet est actuellement en production.
 https://pokedex-api-nodejs-59es.onrender.com/
 
  # Les routes de l'API.
-
 # GET /pokemons
     Description : Récupère tous les pokémons.
-POST /pokemons
+# POST /pokemons
     Description : Créer un nouveau pokémon.
     Body : 
         {
@@ -24,9 +23,9 @@ POST /pokemons
             "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
             "types": ["Electrik"]
         }
-GET /pokemons/:id
+# GET /pokemons/:id
     Description : Récupère un pokémon par son ID
-PUT /pokemons/:id
+# PUT /pokemons/:id
     Description : Met à jour un pokémon existant
     Body : 
         {
@@ -36,15 +35,15 @@ PUT /pokemons/:id
             "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
             "types": ["Electrik"]
         }
-DELETE /pokemons/:id
+# DELETE /pokemons/:id
     Description : Supprime un pokémon par son ID
-POST /signup
+# POST /signup
     Description : Crée un nouvel utilisateur.
     Body : {
         "username": "example_user",
         "password": "password123"
     }
-POST /login
+# POST /login
     Description : Authentifie un utilisateur et retourne un token JWT.
     Body : {
         "username": "example_user",
