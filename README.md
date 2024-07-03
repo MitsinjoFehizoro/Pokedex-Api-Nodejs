@@ -12,7 +12,7 @@ https://pokedex-api-nodejs-59es.onrender.com/
 
  # Les routes de l'API.
 
-GET /pokemons
+# GET /pokemons
     Description : Récupère tous les pokémons.
 POST /pokemons
     Description : Créer un nouveau pokémon.
