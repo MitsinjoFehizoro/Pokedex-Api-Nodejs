@@ -3,16 +3,10 @@ const bodyParser = require("body-parser");
 const sequelize = require('./src/db/sequelize')
 const app = express()
 const cors = require('cors')
+require('dotenv').config()
 
 app.use(bodyParser.json())
 
-// Configuration CORS
-const corsOptions = {
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, // Autorise les cookies dans les requêtes
-};
 app.use(cors(corsOptions));
 
 sequelize.initBdd()
@@ -33,7 +27,7 @@ app.use(({ res }) => {
     res.status(404).json({ message })
 })
 
-const port = 5174
+const port = process.env.PORT || 5174
 app.listen(port, () => {
     console.log(`Notre application est lancée sur le port ${port}`);
 })
