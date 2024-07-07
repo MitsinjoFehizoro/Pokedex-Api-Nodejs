@@ -16,7 +16,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-sequelize.initBdd()
+// sequelize.initBdd()
 
 //routes
 require('./src/routes/pokemons/principal')(app)

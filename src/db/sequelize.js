@@ -28,7 +28,7 @@ const User = UserModel(sequelize, DataTypes)
 //initilisation dans la bdd
 const initBdd = () => {
     sequelize
-        .sync({ force: true })
+        .sync({ alter: true })
         .then((_) => {
             for (let i = 0; i < 12; i++) {
                 Pokemon.create({
